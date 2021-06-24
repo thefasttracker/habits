@@ -17,9 +17,9 @@
 
 ∙ Фото
 
-#How To Use:
+## How To Use:
 
 java version 11
 
-## 1. Run ServiceB
-## 2. Start ServiceA
+### 1. Run ServiceB
+### 2. Start ServiceA
