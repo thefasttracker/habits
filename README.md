@@ -21,5 +21,5 @@
 
 java version 11
 
-##1. Run ServiceB
-##2 Start ServiceA
+## 1. Run ServiceB
+## 2. Start ServiceA
