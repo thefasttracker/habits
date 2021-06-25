@@ -3,6 +3,7 @@ package com.example.dhabits.servicea;
 import com.example.dhabits.serviceb.model.UserData;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -11,7 +12,7 @@ import static com.example.dhabits.utils.Utils.convertImgToJson;
 @Slf4j
 public class MessageGeneratorImpl implements MessageGenerator {
 
-    private final String path = "photo/photo.jpg";
+    private final String path = "photo" + File.separator + "photo.jpg";
 
     @Override
     public UserData generateData() {
@@ -24,7 +25,7 @@ public class MessageGeneratorImpl implements MessageGenerator {
             userData.setPhoto(convertImgToJson(path));
         } catch(IOException e) {
             e.printStackTrace();
-        };
+        }
         userData.setId("234fre543gtrdfght");
         System.out.println(userData);
 

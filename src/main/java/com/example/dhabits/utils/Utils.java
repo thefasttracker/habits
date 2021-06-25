@@ -20,7 +20,7 @@ public class Utils {
     }
 
     public static String convertImgToJson(String filePath) throws IOException {
-        File file = new File("photo" + File.separator + "photo.jpg");
+        File file = new File(filePath);
         byte[] fileContent = FileUtils.readFileToByteArray(file);
         return Base64.getEncoder().encodeToString(fileContent);
     }

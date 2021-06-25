@@ -15,7 +15,6 @@ import static com.example.dhabits.utils.Utils.toJson;
 @Slf4j
 public class MessageSenderImpl implements MessageSender{
 
-    //sorry лень было выносить в application.yml
     private final String url = "http://localhost:8080/dataservice";
 
     @Override
