@@ -27,7 +27,7 @@ public class MessageGeneratorImpl implements MessageGenerator {
             e.printStackTrace();
         }
         userData.setId("234fre543gtrdfght");
-        System.out.println(userData);
+        log.info("generateData: " + userData);
 
         return userData;
     }
