@@ -1,6 +1,6 @@
 package com.example.dhabits.servicea;
 
-import com.example.dhabits.serviceb.model.UserData;
+import com.example.dhabits.serviceb.model.Person;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
@@ -15,10 +15,10 @@ import static com.example.dhabits.utils.Utils.toJson;
 @Slf4j
 public class MessageSenderImpl implements MessageSender{
 
-    private final String url = "http://localhost:8080/dataservice";
+    private final String url = "http://localhost:8080/persons";
 
     @Override
-    public void sendData(UserData data) throws Exception {
+    public void sendData(Person data) throws Exception {
 
         HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
         connection.setRequestMethod("POST");

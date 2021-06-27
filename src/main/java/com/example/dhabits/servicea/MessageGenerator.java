@@ -1,10 +1,10 @@
 package com.example.dhabits.servicea;
 
-import com.example.dhabits.serviceb.model.UserData;
+import com.example.dhabits.serviceb.model.Person;
 
 public interface MessageGenerator {
 
-    UserData generateData();
+    Person generateData();
 
 }
 

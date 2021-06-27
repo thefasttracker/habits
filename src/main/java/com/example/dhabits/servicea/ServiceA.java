@@ -1,6 +1,6 @@
 package com.example.dhabits.servicea;
 
-import com.example.dhabits.serviceb.model.UserData;
+import com.example.dhabits.serviceb.model.Person;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.*;
@@ -13,7 +13,7 @@ public class ServiceA {
         MessageGenerator messageGenerator = new MessageGeneratorImpl();
         MessageSender messageSender = new MessageSenderImpl();
 
-        final BlockingQueue<UserData> taskQueue = new ArrayBlockingQueue<>(3);
+        final BlockingQueue<Person> taskQueue = new ArrayBlockingQueue<>(3);
 
         ExecutorService service = Executors.newFixedThreadPool(2);
 
@@ -21,11 +21,11 @@ public class ServiceA {
         new Thread(() -> {
             for(int i = 0; i < 3; i++) {
                 try {
-                    UserData userData = messageGenerator.generateData();
+                    Person person = messageGenerator.generateData();
                     if (i == 1) {
-                        userData.setId("123");
+                        person.setId("123");
                     }
-                    taskQueue.put(userData);
+                    taskQueue.put(person);
                     log.info("add task #" + i);
                     Thread.sleep(1000);
                 } catch (InterruptedException ignore) { /*NOP*/; }
@@ -35,10 +35,10 @@ public class ServiceA {
         //Consumer
         while(true) {
             try {
-                UserData userData = taskQueue.take();
+                Person person = taskQueue.take();
                 service.execute(() -> {
                     try {
-                        messageSender.sendData(userData);
+                        messageSender.sendData(person);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

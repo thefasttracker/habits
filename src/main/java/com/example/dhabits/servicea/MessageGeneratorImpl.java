@@ -1,6 +1,7 @@
 package com.example.dhabits.servicea;
 
-import com.example.dhabits.serviceb.model.UserData;
+import com.example.dhabits.serviceb.model.Passport;
+import com.example.dhabits.serviceb.model.Person;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
@@ -15,21 +16,26 @@ public class MessageGeneratorImpl implements MessageGenerator {
     private final String path = "photo" + File.separator + "photo.jpg";
 
     @Override
-    public UserData generateData() {
+    public Person generateData() {
 
-        final UserData userData = new UserData();
-        userData.setFio("Jane Doe");
-        userData.setDateOfBirth(LocalDate.of(1995, 2, 17));
-        userData.setContacts("+7 (495) 000-00-00");
+        final Person person = new Person();
+        final Passport passport = new Passport();
+        person.setFio("Jane Doe");
+        person.setDateOfBirth(LocalDate.of(1995, 2, 17));
+        person.setContacts("+7 (495) 000-00-00");
+        passport.setIssueDate(LocalDate.of(2010, 3, 18));
+        passport.setIssuedBy("UVD Moscow");
+        passport.setNumberAndSeries(123456789);
+        person.setPassport(passport);
         try {
-            userData.setPhoto(convertImgToJson(path));
+            person.setPhoto(convertImgToJson(path));
         } catch(IOException e) {
             e.printStackTrace();
         }
-        userData.setId("234fre543gtrdfght");
-        log.info("generateData: " + userData);
+        person.setId("234fre543gtrdfght");
+        log.info("generateData: " + person);
 
-        return userData;
+        return person;
     }
 
 

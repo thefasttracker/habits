@@ -1,6 +1,6 @@
 package com.example.dhabits.utils;
 
-import com.example.dhabits.serviceb.model.UserData;
+import com.example.dhabits.serviceb.model.Person;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -12,11 +12,11 @@ import java.io.IOException;
 import java.util.Base64;
 
 public class Utils {
-    public static String toJson(UserData params) throws JsonProcessingException {
+    public static String toJson(Person params) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        return objectMapper.writeValueAsString(params);
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(params);
     }
 
     public static String convertImgToJson(String filePath) throws IOException {
