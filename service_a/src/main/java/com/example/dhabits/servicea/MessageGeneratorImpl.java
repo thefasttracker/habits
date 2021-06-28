@@ -1,7 +1,7 @@
 package com.example.dhabits.servicea;
 
-import com.example.dhabits.servicea.model.Passport;
-import com.example.dhabits.servicea.model.Person;
+import com.example.dhabits.servicea.model.dto.Passport;
+import com.example.dhabits.servicea.model.dto.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

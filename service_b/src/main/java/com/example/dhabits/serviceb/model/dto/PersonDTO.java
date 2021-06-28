@@ -1,21 +1,18 @@
-package com.example.dhabits.serviceb.model;
+package com.example.dhabits.serviceb.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
-@Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Person {
+public class PersonDTO {
 
-    @Id
     @NotBlank
     @Size(min=16, max=19, message="id must be at least 16 and up to 19 characters long")
     private String id;
@@ -24,14 +21,12 @@ public class Person {
     private String fio;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
     private String contacts;
 
     @NotNull
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "person")
-    @JoinColumn(name = "passport_id")
-    private Passport passport;
+    private PassportDTO passport;
 
     @NotBlank
     private String photo;

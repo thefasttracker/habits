@@ -1,6 +1,6 @@
 package com.example.dhabits.servicea;
 
-import com.example.dhabits.servicea.model.Person;
+import com.example.dhabits.servicea.model.dto.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -14,8 +14,8 @@ import java.util.concurrent.Executors;
 @Component
 public class ServiceARunner implements CommandLineRunner {
 
-    MessageGenerator messageGenerator;
-    MessageSender messageSender;
+    private final MessageGenerator messageGenerator;
+    private final MessageSender messageSender;
 
     public ServiceARunner(MessageGenerator messageGenerator, MessageSender messageSender) {
         this.messageGenerator = messageGenerator;
@@ -27,7 +27,7 @@ public class ServiceARunner implements CommandLineRunner {
 
         final BlockingQueue<Person> taskQueue = new ArrayBlockingQueue<>(3);
 
-        ExecutorService service = Executors.newFixedThreadPool(2);
+        ExecutorService service = Executors.newCachedThreadPool();
 
         //Producer
         new Thread(() -> {

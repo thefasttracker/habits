@@ -1,4 +1,4 @@
-package com.example.dhabits.servicea.model;
+package com.example.dhabits.servicea.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package com.example.dhabits.serviceb.controller;
 
-import com.example.dhabits.serviceb.model.Person;
-import com.example.dhabits.serviceb.repository.PersonRepository;
+import com.example.dhabits.serviceb.model.dto.PersonDTO;
+import com.example.dhabits.serviceb.service.PersonServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,15 +18,15 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping({
         "/dataservice",
-        "/v2.0/persons",
+        "/v1.0/persons",
         })
 @Slf4j
 public class ServiceBController {
 
-    private PersonRepository personRepository;
+    private final PersonServiceImpl personService;
 
-    public ServiceBController(PersonRepository personRepository) {
-        this.personRepository = personRepository;
+    public ServiceBController(PersonServiceImpl personService) {
+        this.personService = personService;
     }
 
     private enum ResponseMsg {
@@ -34,7 +34,7 @@ public class ServiceBController {
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> processPostRequest(@RequestBody @Valid Person person, Errors errors) {
+    public ResponseEntity<String> processPostRequest(@RequestBody @Valid PersonDTO person, Errors errors) {
 
         log.info("   --- processPostRequest(): " + person);
 
